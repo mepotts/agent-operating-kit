@@ -24,4 +24,5 @@ Template: `${CLAUDE_PLUGIN_ROOT}/templates/SPRINT.md`. Command: `/agent-operatin
 - No code before the outcome and the tier are agreed.
 - "Done" is written as checks, not adjectives. If a criterion cannot fail, rewrite it.
 - Keep it under two pages. Link depth instead of pasting it.
+- No repository in scope, or an empty one? Do not invent paths or commands. Name file boundaries by role (for example "route handlers", "shared middleware"), mark each `confirm against the repo`, and say what you need from the human.
 - Save it at the spec path named in the project's `AGENTS.md` (default `sprints/<slug>.md`), then stop and ask the human to confirm outcome and tier.

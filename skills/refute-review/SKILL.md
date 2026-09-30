@@ -1,6 +1,6 @@
 ---
 name: refute-review
-description: Verify that an agent's work is really done by trying to refute it - re-run the checks, read the assertions, run a red-green proof, demand evidence. Use when an agent or person claims work is done, fixed, passing or ready to merge, or when asked to review, double-check, audit or independently verify a change.
+description: Verify that an agent's work is really done by trying to refute it - re-run the checks, read the assertions, run a red-green proof, demand evidence. Use when an agent or person claims work is done, fixed, passing or ready to merge, when asked to review, double-check, audit or independently verify a change, or when asked how to check an agent's claim.
 ---
 
 # Refute review

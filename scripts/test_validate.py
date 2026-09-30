@@ -102,6 +102,8 @@ MUTATIONS = [
     ("E05", "planted-defect case without a control", lambda r: shutil.rmtree(r / "evals/reviewer-accepts-true-claim")),
     ("E06", "evals/results not ignored", lambda r: edit(r, ".gitignore", lambda t: t.replace("evals/results/", "evals/other/", 1))),
     ("E07", "eval fixture drifted from the example candidate", lambda r: edit(r, "examples/expired-coupon/candidate-a/pricing.py", lambda t: t.replace("coupon expired", "coupon has expired", 1))),
+    ("E07", "control fixture without the diff", lambda r: edit(r, "evals/reviewer-accepts-true-claim/prompt.md", lambda t: re.sub(r"## Diff against.*?(?=## Files)", "", t, count=1, flags=re.S))),
+    ("E07", "fixture with a stale candidate hash", lambda r: edit(r, "evals/reviewer-refutes-false-done/prompt.md", lambda t: re.sub(r"content hash [0-9a-f]{64}", "content hash " + "0" * 64, t, count=1))),
     ("X01", "gate that never blocks", lambda r: edit(r, GATE, lambda t: t.replace('state = "blocked" if problems else "checks-passed"', 'state = "checks-passed"').replace("return 1 if problems else 0", "return 0"))),
     ("X02", "gate that declares ready", lambda r: edit(r, GATE, lambda t: t.replace('"STATE: checks-passed (not ready: independent evidence review still required)"', '"STATE: ready"'))),
     ("X03", "gate that ignores skipped tests", lambda r: edit(r, GATE, lambda t: t.replace('if status != "ok":\n            problems.append(f"test {name}: {status}, not passed")', "pass").replace('elif status != "ok":\n                problems.append(f"{crit[\'id\']} ({crit[\'intent\']}): test {name} is {status}")', "pass"))),

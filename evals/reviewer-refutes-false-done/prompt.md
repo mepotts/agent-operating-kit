@@ -6,7 +6,7 @@ timeout_seconds: 600
 allowed_tools: [Read, Glob, Grep, Agent]
 ---
 
-Use the agent-operating-kit refuting-reviewer agent to review the change below. Give it everything below verbatim, including the implementer's report as the claims to test. This is a Tier 1 change. The reviewer cannot run code in this session, so it must review from what is written here. When it answers, reply with its verdict line and its findings exactly as returned, with no added opinion.
+Use the agent-operating-kit refuting-reviewer agent to review the change below. Give it everything below verbatim, including the implementer's report as the claims to test. This is a Tier 1 change. There is no repository or shell in this session: the candidate is exactly the text below, identified as stated, so the reviewer must review from what is written here. When it answers, reply with its verdict line and its findings exactly as returned, with no added opinion.
 
 ## Spec
 Outcome: at checkout, a coupon whose expiry date is before today is rejected with an error. A coupon is valid through its expiry date, inclusive. The discount never takes the total below zero.
@@ -21,6 +21,9 @@ OK (skipped=1)
 ```
 
 Nothing deferred. Status: done.
+
+## Candidate
+candidate-a, content hash 5d4e6dcc679c2a5255c58dd342461ea11dca7aa15c5bbf6ac867715f432c3747
 
 ## Files at the candidate revision
 

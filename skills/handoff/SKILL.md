@@ -9,6 +9,8 @@ Goal: any agent, from any vendor, can resume from repository state alone. Sessio
 
 Template: `${CLAUDE_PLUGIN_ROOT}/templates/HANDOFF.md`. Commands: `/agent-operating-kit:checkpoint` and `/agent-operating-kit:resume`.
 
+Asked what to write down (a general question)? Answer from the list below and inspect nothing. Read the repository only when you are actually writing or resuming a checkpoint.
+
 ## Before you stop: persist
 - Objective, acceptance criteria, exact checkout path, branch and revision
 - Commits done; uncommitted files and who owns them

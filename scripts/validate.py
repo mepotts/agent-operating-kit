@@ -14,6 +14,8 @@ template drift, hygiene or the eval suite. This script does.
 """
 from __future__ import annotations
 
+import difflib
+import importlib.util
 import json
 import re
 import shutil
@@ -58,7 +60,7 @@ GRADER_KEYS = {
 
 README_SECTIONS = ["what it is", "who it is for", "quickstart", "inside", "loop", "limitations", "provenance"]
 README_MAX_WORDS = 900
-SKILL_MAX_LINES = 90
+SKILL_MAX_LINES = 60
 TEMPLATE_SECTIONS = {
     "AGENTS.md": ["Commands", "Guardrails", "Work loop", "Release", "Handoff", "Failures become rules", "What stays human"],
     "SPRINT.md": ["Outcome", "Files", "Acceptance", "Isolation", "Stop and report if", "Irreversible actions",
@@ -603,14 +605,33 @@ def check_evals(c: Ctx) -> None:
 
     ex = root / "examples" / "expired-coupon"
     p7: list[str] = []
+    gate_mod = None
+    if (ex / "gate.py").exists():
+        spec = importlib.util.spec_from_file_location("aok_example_gate", ex / "gate.py")
+        gate_mod = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(gate_mod)
     for tag, cand in (("planted-defect", "candidate-a"), ("control", "candidate-b")):
         for d in cases:
             fm, _, body, _ = load_md(d / "prompt.md")
-            if fm and tag in (fm.get("tags") or []):
+            if not (fm and tag in (fm.get("tags") or [])):
+                continue
+            for fname in ("pricing.py", "test_pricing.py"):
+                src = ex / cand / fname
+                if not src.exists() or read(src).strip() not in body:
+                    p7.append(f"{c.rel(d)}: does not embed {cand}/{fname} verbatim")
+            if gate_mod is not None and gate_mod.content_hash(ex / cand) not in body:
+                p7.append(f"{c.rel(d)}: does not state the current content hash of {cand}")
+            if tag == "control":  # the control must carry the real diff, or claims about the change cannot be checked
                 for fname in ("pricing.py", "test_pricing.py"):
-                    src = ex / cand / fname
-                    if not src.exists() or read(src).strip() not in body:
-                        p7.append(f"{c.rel(d)}: does not embed {cand}/{fname} verbatim")
+                    a, b = ex / "candidate-a" / fname, ex / cand / fname
+                    if not (a.exists() and b.exists()):
+                        continue
+                    for line in difflib.unified_diff(read(a).splitlines(), read(b).splitlines(), lineterm="", n=0):
+                        if line.startswith(("+++", "---", "@@")) or not line[1:].strip():
+                            continue
+                        if line[1:] not in body:
+                            p7.append(f"{c.rel(d)}: diff line missing from the prompt: {line[:60]}")
+                            break
     c.rule("E07", "eval fixtures embed the example candidates verbatim", p7)
 
 

@@ -9,6 +9,8 @@ Readiness belongs to one exact candidate: a source revision plus the artifacts b
 
 Template (declaration schema, step table, state table): `${CLAUDE_PLUGIN_ROOT}/templates/GATE.md`. Command: `/agent-operating-kit:gate`.
 
+Asked a general question with no candidate in scope? Answer from the sequence and the blocker list below. Do not go looking for a repository to gate; use the command when there is one.
+
 ## Sequence
 1. **Declare before coding.** List every changed product path and, per outcome, the named executable checks per platform, with a written reason for each exclusion. The runner refuses a change whose files are not covered.
 2. **Freeze.** Record revision, dirty flag and content hash. Refuse a dirty tree. Take a lease on shared ports, data stores and devices; refuse to start rather than share.
