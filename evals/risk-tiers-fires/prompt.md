@@ -2,6 +2,7 @@
 description: A question about how much review a change needs should load the risk-tiers skill.
 tags: [skill, trigger]
 max_turns: 12
+timeout_seconds: 600
 allowed_tools: [Read, Glob, Grep, Skill]
 ---
 
