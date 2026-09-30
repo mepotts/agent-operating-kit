@@ -1,0 +1,11 @@
+# Eval run output: transcripts and reports stay local. A sanitized summary is in VERIFICATION.md.
+evals/results/
+
+# Python
+__pycache__/
+*.pyc
+
+# Local-only files (never committed)
+.leak-denylist.local
+/HANDOFF.md
+*.local.md

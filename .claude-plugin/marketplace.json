@@ -1,0 +1,20 @@
+{
+  "name": "agent-operating-kit",
+  "description": "Marketplace for the Agent Operating Kit plugin.",
+  "owner": {
+    "name": "Matthew Potts",
+    "url": "https://github.com/mepotts"
+  },
+  "metadata": {
+    "description": "Marketplace for the Agent Operating Kit plugin."
+  },
+  "plugins": [
+    {
+      "name": "agent-operating-kit",
+      "source": "./",
+      "description": "Sprint specs, risk-tiered review, a refuting reviewer, an exact-candidate release gate, handoffs, and failure-to-rule discipline for AI coding agents.",
+      "category": "workflow",
+      "tags": ["agents", "verification", "code-review", "release-gate", "handoff"]
+    }
+  ]
+}

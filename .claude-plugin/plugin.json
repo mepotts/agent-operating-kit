@@ -1,0 +1,21 @@
+{
+  "name": "agent-operating-kit",
+  "version": "0.1.0",
+  "description": "A method for running AI coding agents on real projects: sprint specs with risk tiers, an independent reviewer told to refute, an exact-candidate release gate, resumable handoffs, and a habit of turning every failure into a check.",
+  "author": {
+    "name": "Matthew Potts",
+    "url": "https://github.com/mepotts"
+  },
+  "homepage": "https://github.com/mepotts/agent-operating-kit",
+  "repository": "https://github.com/mepotts/agent-operating-kit",
+  "license": "MIT",
+  "keywords": [
+    "agents",
+    "agents-md",
+    "code-review",
+    "verification",
+    "release-gate",
+    "handoff",
+    "workflow"
+  ]
+}
