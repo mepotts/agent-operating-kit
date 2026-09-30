@@ -7,7 +7,7 @@ Read by Claude Code, Codex, Cursor, Copilot and other agents. Rules every tool m
 ## Commands
 - Run: `<FILL>`  Build: `<FILL>`  Test: `<FILL>`
 - Verify (must pass before merge): `<FILL>`
-- Where things live: specs `sprints/<slug>.md` · failure log `FAILURE-LOG.md` · checkpoint `HANDOFF.md` (git-ignored) · gate evidence `<FILL>`
+- Where things live: specs `sprints/<slug>.md`; failure log `FAILURE-LOG.md`; checkpoint `HANDOFF.md` (git-ignored); gate evidence `<FILL>`
 
 ## Guardrails
 1. **Irreversible actions need approval of the exact change, each time.** Read "irreversible" for your domain: `<FILL: production data writes and deletes, publishing, payments, outward messages, spending compute or API budget>`. Show the command or diff. Approval is per change, not per pattern.

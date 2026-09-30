@@ -35,7 +35,7 @@ Candidate: <revision> (<branch>), dirty: <yes|no|unknown>; risk tier reviewed ag
 
 | # | Claim | Evidence needed | Evidence found | Status |
 |---|---|---|---|---|
-(status is supported, refuted or unsupported)
+(status: supported = you reproduced it; refuted = the evidence contradicts it; unsupported = the evidence it needs does not exist; unverified = the evidence looks consistent but you could not reproduce it)
 
 Findings, most severe first. Each: where, what, how to reproduce, blocks merge yes/no.
 
@@ -43,4 +43,4 @@ Ran: <command - exit code - run/passed/skipped/failed>
 
 Not verified: <everything you could not check, and why>
 ```
-FAIL if any claim the work depends on is refuted or unsupported. PASS WITH FOLLOW-UPS if every claim is supported but non-blocking issues or unverified items remain. PASS only if every claim is supported by evidence you produced yourself.
+FAIL if any claim the work depends on is refuted or unsupported. PASS WITH FOLLOW-UPS if no claim is refuted or unsupported but some are unverified or non-blocking issues remain. PASS only if every claim is supported by evidence you produced yourself.

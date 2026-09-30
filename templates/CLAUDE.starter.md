@@ -38,7 +38,7 @@ Shared files (coordinate before editing): `<FILL: schema, shared types, root lay
 - Real run target (a green typecheck is not enough): `<FILL: the deploy or run path that proves it works>`
 
 ## Kit commands (if the agent-operating-kit plugin is installed)
-`/agent-operating-kit:sprint` spec first · `:refute` independent review · `:gate` exact-candidate gate · `:checkpoint` and `:resume` handoffs · `:postmortem` failure to rule.
+`/agent-operating-kit:sprint` spec first; `:refute` independent review; `:gate` exact-candidate gate; `:checkpoint` and `:resume` handoffs; `:postmortem` failure to rule.
 
 ## Known gotchas
 - `<FILL: third-party quirks, infrastructure limits, foot-guns future agents will trip on>`
