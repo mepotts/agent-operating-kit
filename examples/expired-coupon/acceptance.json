@@ -1,0 +1,21 @@
+{
+  "id": "expired-coupon",
+  "files": ["pricing.py", "test_pricing.py"],
+  "criteria": [
+    {
+      "id": "c1",
+      "intent": "checkout rejects a coupon whose expiry date is before today",
+      "tests": ["test_checkout_rejects_expired_coupon"]
+    },
+    {
+      "id": "c2",
+      "intent": "a coupon is still valid on its last day",
+      "tests": ["test_checkout_accepts_coupon_on_its_last_day"]
+    },
+    {
+      "id": "c3",
+      "intent": "the discount never takes the total below zero",
+      "tests": ["test_discount_never_goes_below_zero"]
+    }
+  ]
+}
