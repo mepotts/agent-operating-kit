@@ -20,7 +20,7 @@ Ran 5 tests in 0.000s
 OK
 ```
 
-Red-green, in a scratch copy: with the expiry check deleted, test_checkout_rejects_expired_coupon fails ("ValueError not raised", FAILED (failures=1)); with the check restored, OK. Nothing deferred. Status: done.
+Red-green, in a scratch copy: with checkout() pointed back at the old apply_promo() path (the expiry check left in place), test_checkout_rejects_expired_coupon fails ("ValueError not raised", FAILED (failures=1)); with the fix restored, OK. Nothing deferred. Status: done.
 
 ## Candidate
 candidate-b, content hash 9f2798d6601dbb115af576f51bd739b6f22963297afc584240f817066a3c4762

@@ -88,11 +88,12 @@ The reviewer re-reviews the new revision from scratch. Its red-green evidence:
 
 | Experiment on candidate-b, in a throwaway copy | Result |
 |---|---|
-| Delete the expiry check | `FAILED (failures=1)`: `test_checkout_rejects_expired_coupon`, "ValueError not raised" |
-| Restore it | `OK`, 5 tests |
+| Revert only the fix: point `checkout()` back at the old `apply_promo()` path, leaving the expiry check in place | `FAILED (failures=1)`: `test_checkout_rejects_expired_coupon`, "ValueError not raised" |
+| Restore the fix | `OK`, 5 tests |
+| Delete the expiry check instead | `FAILED (failures=1)`: the same test |
 | Change `<` to `<=` (off-by-one) | `FAILED (errors=1)`: `test_checkout_accepts_coupon_on_its_last_day` |
 
-Only the reject test discriminates the fix itself, and only the last-day test discriminates the boundary, so both are needed. Then `python gate.py candidate-b --acceptance acceptance.json` (exit 0):
+The fix between the two candidates is the routing, not the expiry check (which candidate-a already had but never reached), so that is what a red-green must revert. Only the reject test discriminates the fix, and only the last-day test discriminates the boundary, so both are needed. Then `python gate.py candidate-b --acceptance acceptance.json` (exit 0):
 
 ```
 candidate      candidate-b

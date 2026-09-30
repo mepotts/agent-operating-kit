@@ -74,6 +74,8 @@ TEMPLATE_SECTIONS = {
 }
 GATE_STATES = ["blocked", "checks-passed", "review-pending", "partial", "ready"]
 
+sys.dont_write_bytecode = True  # importing the example gate must not litter the repo with __pycache__
+
 SKIP_DIRS = {".git", "__pycache__", "node_modules", "results"}
 TEXT_EXT = {".md", ".json", ".py", ".yml", ".yaml", ".txt"}
 

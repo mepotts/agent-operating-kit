@@ -9,7 +9,7 @@ description: Turn an agent failure into a mechanical guardrail instead of 'be mo
 
 Template: `${CLAUDE_PLUGIN_ROOT}/templates/FAILURE-LOG.md`. Command: `/agent-operating-kit:postmortem`.
 
-If the incident is only described, with no repository, logs or diff at hand, work from the description: say what you could not verify, and give the guardrail as a design the user can adopt.
+If the incident is only described, with no repository, logs or diff at hand, work from the description: say what you could not verify, and give the guardrail as a design the user can adopt, including how to prove it goes red on a failing fixture and the `FAILURE-LOG.md` entry to record.
 
 ## Steps
 1. **Reconstruct from evidence** (diff, logs, transcript excerpts), not from the agent's account of itself. Note how late it was detected.
