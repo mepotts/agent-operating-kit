@@ -20,7 +20,7 @@ People who direct coding agents (Claude Code, Codex, Cursor and similar) on soft
 /agent-operating-kit:sprint add rate limiting to the export endpoint
 ```
 
-From a local clone, use `/plugin marketplace add ./agent-operating-kit` for the first line.
+The GitHub form works once the repository is published. Until then, use a local clone: `/plugin marketplace add ./agent-operating-kit` for the first line.
 
 **Without the plugin**, for any agent: copy `templates/AGENTS.md` to your repo root as `AGENTS.md` and fill the `<FILL>` lines. Claude Code users also copy `templates/CLAUDE.starter.md` to `CLAUDE.md`. Add the other templates when you need them.
 
