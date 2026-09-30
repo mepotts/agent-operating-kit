@@ -129,6 +129,8 @@ Note what did not happen: nobody wrote "be more careful with skipped tests". The
 
 ## Run it
 
+Python 3.10 or later, standard library only.
+
 ```
 cd examples/expired-coupon
 python gate.py candidate-a --acceptance acceptance.json   # exit 1, STATE: blocked

@@ -2,7 +2,7 @@
 
 > TEMPLATE from agent-operating-kit. Copy to your repo root, fill every `<FILL>`, delete what does not apply, then delete this note. Keep the result under two pages: for each line ask "would removing this cause a mistake?" and cut it if not. Write it by hand from real incidents; a generated file adds noise and gets its own rules ignored.
 
-Read by Claude Code, Codex, Cursor, Copilot and other agents. Rules every tool must obey go here; tool-specific notes go in that tool's own file. The nearest AGENTS.md to a file wins. Instructions shape behavior; they do not enforce it. Put hard limits in your tool's permission settings and in CI.
+Read by Codex, Cursor, Copilot and many other agents. Claude Code reads it through the `@AGENTS.md` import in `CLAUDE.md` (see `CLAUDE.starter.md`), or directly on v2.1.277 and later when there is no `CLAUDE.md`. Rules every tool must obey go here; tool-specific notes go in that tool's own file. The nearest AGENTS.md to a file wins. Instructions shape behavior; they do not enforce it. Put hard limits in your tool's permission settings and in CI.
 
 ## Commands
 - Run: `<FILL>`  Build: `<FILL>`  Test: `<FILL>`

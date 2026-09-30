@@ -4,7 +4,7 @@ All notable changes are recorded here. The format follows [Keep a Changelog](htt
 
 ## [0.1.0] - 2026-09-30
 
-Initial pre-release. Not yet published, and not yet used by anyone but its author.
+Initial pre-release. Not yet published, and not yet used on a real project.
 
 ### Added
 - Plugin manifest and a single-plugin marketplace manifest in `.claude-plugin/`.
