@@ -13,6 +13,6 @@ Results go to `evals/results/`, which is git-ignored. `--no-publish` keeps the H
 | `sprint-spec-fires`, `risk-tiers-fires`, `refute-review-fires`, `release-gate-fires`, `handoff-fires`, `failure-to-rule-fires` | The named skill fires on natural phrasing, and the answer has the right shape |
 | `unrelated-request-quiet` | No skill fires on an ordinary rename |
 | `reviewer-refutes-false-done` | The reviewer returns FAIL on a planted false "done" and names the defects |
-| `reviewer-accepts-true-claim` | The same reviewer does not FAIL a true claim. This control keeps the graders able to go both ways |
+| `reviewer-accepts-true-claim` | The same reviewer does not FAIL a true claim. This control checks that the graders can go both ways |
 
-The reviewer cases embed the `examples/expired-coupon` candidates verbatim, and `scripts/validate.py` rule E07 fails if they drift. Recorded results, and what they do and do not show, are in [VERIFICATION.md](../VERIFICATION.md).
+The reviewer cases embed the `examples/expired-coupon` candidates verbatim. `scripts/validate.py` rule E07 fails if they drift. [VERIFICATION.md](../VERIFICATION.md) records the results and what they do and do not show.

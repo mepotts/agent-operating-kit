@@ -1,8 +1,12 @@
 # Worked example: the expired-coupon sprint
 
-> **Illustrative.** A toy project and an invented scenario. It is not a real incident and not evidence that the kit works. What is real: every command output below was produced by running `unittest` and `gate.py` in this folder (Python 3.12, 2026-09-30). The reviewer's verdict is hand-written to show the output shape; `evals/reviewer-refutes-false-done` runs the real `refuting-reviewer` agent against the same claims.
+> **Illustrative.** A toy project and an invented scenario. No real incident happened, and the example shows nothing about whether the kit works.
+>
+> **What is real:** every command output below came from running `unittest` and `gate.py` in this folder (Python 3.12, 2026-09-30).
+>
+> **What is hand-written:** the reviewer's verdict, to show the output shape. `evals/reviewer-refutes-false-done` runs the real `refuting-reviewer` agent against the same claims.
 
-The story in six steps: spec, a false "done", the reviewer refutes it, the gate rejects it, the fix, and the failure becomes a rule.
+The example has six steps: the spec, a false "done", the reviewer's refutation, the gate's rejection, the fix and the new rule.
 
 ```
 expired-coupon/
@@ -14,11 +18,15 @@ expired-coupon/
 
 ## 1. The sprint spec (from `templates/SPRINT.md`, abridged)
 
-- **Outcome:** at checkout, a coupon whose expiry date is before today is rejected with an error. A coupon is valid through its expiry date, inclusive. The discount never takes the total below zero.
-- **Risk tier:** 1. Feature code; no schema, no production data.
-- **Files:** `pricing.py` and `test_pricing.py` are owned. Nothing else.
-- **Acceptance** (named checks, in `acceptance.json`): c1 `test_checkout_rejects_expired_coupon`; c2 `test_checkout_accepts_coupon_on_its_last_day`; c3 `test_discount_never_goes_below_zero`.
-- **Roles:** one agent implements; a different one reviews. Irreversible actions: none.
+**Outcome:** At checkout, a coupon whose expiry date is before today is rejected with an error. A coupon is valid through its expiry date, inclusive. The discount never takes the total below zero.
+
+**Risk tier:** 1, because this is feature code with no schema and no production data.
+
+**Files:** Only `pricing.py` and `test_pricing.py` are owned.
+
+**Acceptance** (named checks, in `acceptance.json`): c1 `test_checkout_rejects_expired_coupon`, c2 `test_checkout_accepts_coupon_on_its_last_day`, c3 `test_discount_never_goes_below_zero`.
+
+**Roles:** One agent implements and a different one reviews. Irreversible actions: none.
 
 ## 2. The implementer reports "done"
 
@@ -29,11 +37,11 @@ expired-coupon/
 > ```
 > Nothing deferred. Status: done.
 
-Every sentence is easy to believe. Two of them are false.
+The report is easy to believe, and two of its claims are false.
 
 ## 3. The refuting reviewer catches it
 
-Hand-written in the shape `agents/refuting-reviewer.md` requires. The reviewer read the diff and re-ran the checks; it did not read the report as evidence.
+This verdict is hand-written in the shape `agents/refuting-reviewer.md` requires. The reviewer read the diff and re-ran the checks. It treated the report as claims to test.
 
 ```
 VERDICT: FAIL
@@ -58,7 +66,7 @@ Ran: python -m unittest -v - exit 0 - 4 run, 3 passed, 1 skipped
 Not verified: the storefront's own call site, which is outside this repository.
 ```
 
-Red-green is what exposes finding 2: revert the fix in a throwaway copy and the suite stays green.
+Red-green exposes finding 2. With the fix reverted in a throwaway copy, the suite stays green.
 
 ## 4. The gate rejects the candidate
 
@@ -74,17 +82,13 @@ tests          4 found, {'skipped': 1, 'ok': 3}
 STATE: blocked
 ```
 
-The test runner itself exited 0. The gate does not trust "exit 0": a skip, a failure, a missing named test, zero tests, or a source change mid-run all block.
+The test runner itself exited 0, and the gate ignores that. It blocks on a skip, a failure, a missing named test, zero tests or a source change mid-run.
 
 ## 5. The fix, and a new candidate
 
-The implementer gets the reviewer's findings, not a chance to argue. The changes (`diff -u candidate-a candidate-b`):
+The implementer gets the reviewer's findings and makes the fix. `diff -u candidate-a candidate-b` shows three changes: 1) `checkout()` now calls `apply_coupon()`, and the older `apply_promo()` is deleted. 2) The skip is removed from `test_checkout_rejects_expired_coupon`. 3) A new test covers a coupon on its last day.
 
-- `checkout()` now calls `apply_coupon()`, and the older `apply_promo()` is deleted.
-- The skip is removed from `test_checkout_rejects_expired_coupon`.
-- A new test covers a coupon on its last day.
-
-The reviewer re-reviews the new revision from scratch. Its red-green evidence:
+The reviewer then reviews the new revision from scratch. Its red-green evidence is in this table:
 
 | Experiment on candidate-b, in a throwaway copy | Result |
 |---|---|
@@ -93,7 +97,9 @@ The reviewer re-reviews the new revision from scratch. Its red-green evidence:
 | Delete the expiry check instead | `FAILED (failures=1)`: the same test |
 | Change `<` to `<=` (off-by-one) | `FAILED (errors=1)`: `test_checkout_accepts_coupon_on_its_last_day` |
 
-The fix between the two candidates is the routing, not the expiry check (which candidate-a already had but never reached), so that is what a red-green must revert. Only the reject test discriminates the fix, and only the last-day test discriminates the boundary, so both are needed. Then `python gate.py candidate-b --acceptance acceptance.json` (exit 0):
+The fix between the two candidates is the routing. Candidate-a already had the expiry check but never reached it, so a red-green has to revert the routing. Only the reject test fails when the fix is reverted, and only the last-day test fails when the boundary moves. Both tests are needed.
+
+The gate then runs on candidate-b with `python gate.py candidate-b --acceptance acceptance.json` (exit 0):
 
 ```
 candidate      candidate-b
@@ -102,7 +108,7 @@ tests          5 found, {'ok': 5}
 STATE: checks-passed (not ready: independent evidence review still required)
 ```
 
-`checks-passed` is the most this script can say. Ready needs the independent evidence review and a separate finalizer (see `templates/GATE.md`), and publishing stays a human decision.
+`checks-passed` is the most this script can say. Ready needs the independent evidence review and a separate finalizer (see `templates/GATE.md`). Publishing stays a human decision.
 
 ## 6. The failure becomes a rule
 
@@ -125,7 +131,7 @@ Entry in `FAILURE-LOG.md` (from `templates/FAILURE-LOG.md`):
 - Review date: 2027-03-30
 ```
 
-Note what did not happen: nobody wrote "be more careful with skipped tests". The rule is one line, and a machine enforces it.
+The rule is one line, and a machine enforces it. The log never says "be more careful with skipped tests".
 
 ## Run it
 

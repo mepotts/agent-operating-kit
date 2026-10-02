@@ -1,8 +1,8 @@
 # Changelog
 
-All notable changes are recorded here. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and versions follow [Semantic Versioning](https://semver.org/).
+This file records notable changes. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and versions follow [Semantic Versioning](https://semver.org/).
 
-## [0.1.0] - 2026-09-30
+## [0.1.0] (2026-09-30)
 
 Initial pre-release. Not yet published, and not yet used on a real project.
 
@@ -17,4 +17,4 @@ Initial pre-release. Not yet published, and not yet used on a real project.
 - An eval suite for `claude plugin eval` (`evals/`), and `VERIFICATION.md`, which records what was run and what was not.
 
 ### Notes
-- `displayName` is deliberately absent from `plugin.json`: Claude Code 2.1.39 rejects it as an unrecognized key.
+- `displayName` is left out of `plugin.json` because Claude Code 2.1.39 rejects it as an unrecognized key.

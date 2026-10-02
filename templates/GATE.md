@@ -1,6 +1,6 @@
 # Release gate: <project or release name>
 
-> TEMPLATE. Copy to the gate path named in AGENTS.md, fill every `<...>`, delete guidance. A gate is a deterministic check that passes or fails without a person. It publishes nothing; it produces evidence that a person or release process can rely on.
+> TEMPLATE. Copy to the gate path named in AGENTS.md, fill every `<...>`, delete guidance. A gate is a deterministic check that passes or fails without a person. It publishes nothing. It produces evidence that a person or release process can rely on.
 
 **Principle.** Readiness belongs to one exact candidate: a source revision and the artifacts built from it. "Implemented", "tested", "deployed", "enabled" and "healthy" are separate claims. Any source change after a run voids it. Missing evidence on a new machine means unavailable, not passed.
 
@@ -13,11 +13,11 @@ Frozen before the first step.
 | Dirty flag | `<no>` |
 | Content hash | `<sha256 of tracked files, line endings normalized>` |
 | Built artifacts | `<path>: <sha256>` |
-| Platforms in scope | `<list; anything not listed is not certified>` |
+| Platforms in scope | `<list: anything not listed is not certified>` |
 | Comparison base | `<sha>` |
 
 ## 2. Acceptance declaration
-Written before coding, one small file per change. It covers every changed product path, including deletions; the runner refuses a change whose files it does not cover. Each excluded platform needs a written reason, and a change may not exclude all of them.
+Written before coding, one small file per change. It covers every changed product path, including deletions. The runner refuses a change whose files it does not cover. Each excluded platform needs a written reason, and a change may not exclude all of them.
 
 ```json
 {
@@ -35,7 +35,7 @@ Written before coding, one small file per change. It covers every changed produc
 }
 ```
 
-Pending means pending: a mock or an offline pass never closes a runtime criterion. A matching test name is not proof; the reviewer reads the assertions.
+Pending means pending: a mock or an offline pass never closes a runtime criterion. A matching test name is not proof. The reviewer reads the assertions.
 
 ## 3. Steps
 Run in order on the frozen candidate. Each must pass exactly once.
@@ -45,8 +45,8 @@ Run in order on the frozen candidate. Each must pass exactly once.
 | 1 | Gate self-test | Every rule fires on its failing fixture and stays silent on its passing one | `<cmd>` |
 | 2 | Lint rules | Zero violations | `<cmd>` |
 | 3 | Typecheck or static analysis | Zero errors | `<cmd>` |
-| 4 | Build and smoke test | Built from the frozen source, smoke-tested against a disposable fixture data store; artifact hash recorded | `<cmd>` |
-| 5 | Journeys or integration | Every declared check passed once; nothing skipped, retried, focused or flaky | `<cmd>` |
+| 4 | Build and smoke test | Built from the frozen source, smoke-tested against a disposable fixture data store, artifact hash recorded | `<cmd>` |
+| 5 | Journeys or integration | Every declared check passed once: nothing skipped, retried, focused or flaky | `<cmd>` |
 | 6 | Acceptance evidence | Every criterion's named checks appear in the results as passed | `<cmd>` |
 | 7 | Source stability | Revision, dirty flag and content hash identical before and after | `<cmd>` |
 
@@ -69,7 +69,7 @@ A separate step re-derives everything from files: source unchanged, evidence has
 | State | Meaning |
 |---|---|
 | `blocked` | A step failed or the run was invalidated |
-| `checks-passed` | Every step passed; no independent review yet |
+| `checks-passed` | Every step passed, no independent review yet |
 | `review-pending` | Review missing, unbound or incomplete |
 | `partial` | Not all required platforms ran |
 | `ready` | The finalizer verified everything, for the covered platforms |
@@ -77,7 +77,7 @@ A separate step re-derives everything from files: source unchanged, evidence has
 The runner can end a run as `checks-passed` at most. It never says ready itself.
 
 ## 8. Shared resource lease
-Ports, fixture data stores and devices sit behind an exclusive-create lock that names the owner. Release verifies ownership. Recover only when the owner is provably dead on this host; a stale-looking timestamp is not proof. Refuse to start rather than share.
+Ports, fixture data stores and devices sit behind an exclusive-create lock that names the owner. Release verifies ownership. Recover only when the owner is provably dead on this host. A stale-looking timestamp is not proof. Refuse to start rather than share.
 
 ## 9. Repair loop
 - Preserve the failing run and classify it: product assertion, fixture or setup, missing evidence, visual defect, infrastructure.
@@ -88,4 +88,4 @@ Ports, fixture data stores and devices sit behind an exclusive-create lock that 
 - New source is a new candidate and a new run. Do not combine partial or historical runs.
 
 ## 10. Limits
-This gate does not certify: `<other platforms, store signing, the production network, deployment, live health>`. A local pass is not permission to publish; publishing stays a per-change human decision.
+This gate does not certify: `<other platforms, store signing, the production network, deployment, live health>`. A local pass is not permission to publish. Publishing stays a per-change human decision.

@@ -8,12 +8,12 @@
 
 ## Entry template
 
-### `<YYYY-MM-DD>` - `<short title>`
-- **What happened:** `<observable facts; no blame>`
+### `<YYYY-MM-DD>`: `<short title>`
+- **What happened:** `<observable facts, no blame>`
 - **How it was detected:** `<who or what noticed, and how late>`
 - **Blast radius:** `<what it touched, and what it could have touched>`
 - **Mechanism:** `<why the process allowed it, not who did it>`
-- **Guardrail:** `<the strongest that fits: deterministic gate, hard guard, template field, instruction line>`; lives in `<path>`
+- **Guardrail:** `<the strongest that fits: deterministic gate, hard guard, template field, instruction line>` (lives in `<path>`)
 - **What the check prints:** `<it must state the fix>`
 - **Break-it proof:** `<the command that turns the guardrail red on a failing fixture, and what you observed>`
 - **Twins searched:** `<query, hits, what was done>`

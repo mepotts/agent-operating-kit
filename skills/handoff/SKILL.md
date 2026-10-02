@@ -1,6 +1,6 @@
 ---
 name: handoff
-description: Make work resumable across sessions, agents and vendors - write a checkpoint before stopping and resume from one cold. Use when a usage or context limit is near, when switching to another agent or tool, when stopping mid-task, when picking up unfinished work, or when running parallel agent lanes.
+description: Make work resumable across sessions, agents and vendors (write a checkpoint before stopping and resume from one cold). Use when a usage or context limit is near, when switching to another agent or tool, when stopping mid-task, when picking up unfinished work, or when running parallel agent lanes.
 ---
 
 # Handoff and resume
@@ -9,13 +9,13 @@ Goal: any agent, from any vendor, can resume from repository state alone. Sessio
 
 Template: `${CLAUDE_PLUGIN_ROOT}/templates/HANDOFF.md`. Commands: `/agent-operating-kit:checkpoint` and `/agent-operating-kit:resume`.
 
-Asked what to write down (a general question)? Answer from the list below and inspect nothing. Read the repository only when you are actually writing or resuming a checkpoint.
+Asked what to write down (a general question): answer from the list below and inspect nothing. Read the repository only when you are actually writing or resuming a checkpoint.
 
 ## Before you stop: persist
 - Objective, acceptance criteria, exact checkout path, branch and revision
-- Commits done; uncommitted files and who owns them
+- Commits done, uncommitted files and who owns them
 - Commands run and their verified results, with evidence paths, hashes and platform limits
-- Failed approaches and their diagnosed causes; label hypotheses as hypotheses
+- Failed approaches and their diagnosed causes (label hypotheses as hypotheses)
 - The next concrete action, blockers, pending approvals, shared-resource ownership
 - Obligations that outlive local completion (observing a release, recovery): who carries them and what triggers them
 - If a usage limit caused the stop, when it resets
@@ -39,4 +39,4 @@ Take facts from git and files, not memory. Keep the checkpoint out of version co
 - Steer a running subagent only through its spawn prompt, stating the working directory and first action. Messaging it can create a duplicate acting in the same worktree.
 
 ## Fresh-agent exercise
-After a material change to workflow or docs layout, start an agent with only the checkout path and ask about a dozen questions, requiring citations: what is being built, what agents may do without approval, what was last verified and whether that proves HEAD, how to recover a failed run, what remains unproven. Score each answer on conclusion, citation and limitation. A pass shows retrieval works; it does not show long-term autonomous maintenance.
+After a material change to workflow or docs layout, start an agent with only the checkout path and ask about a dozen questions, requiring citations: what is being built, what agents may do without approval, what was last verified and whether that proves HEAD, how to recover a failed run, what remains unproven. Score each answer on conclusion, citation and limitation. A pass shows retrieval works. It does not show long-term autonomous maintenance.

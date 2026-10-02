@@ -6,4 +6,4 @@ timeout_seconds: 600
 allowed_tools: [Read, Glob, Grep, Skill]
 ---
 
-An agent deleted a failing test to get CI green and nobody noticed for two weeks. What should we change so that cannot happen again?
+An agent deleted a failing test to get CI green and nobody noticed for two weeks. What should we change so that cannot happen again.

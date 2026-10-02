@@ -6,4 +6,4 @@ timeout_seconds: 600
 allowed_tools: [Read, Glob, Grep, Skill]
 ---
 
-We think this release is ready. Before we ship, what has to be true for this exact build, and what should stop the release?
+We think this release is ready. Before we ship, what has to be true for this exact build, and what should stop the release.

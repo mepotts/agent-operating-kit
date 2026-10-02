@@ -6,4 +6,4 @@ timeout_seconds: 600
 allowed_tools: [Read, Glob, Grep, Skill]
 ---
 
-Another agent just told me the retry-logic bug is fixed and all the tests pass. I do not fully trust that. How should I verify it independently before I merge?
+Another agent just told me the retry-logic bug is fixed and all the tests pass. I do not fully trust that. How should I verify it independently before I merge.

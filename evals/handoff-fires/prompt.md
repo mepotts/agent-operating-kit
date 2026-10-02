@@ -6,4 +6,4 @@ timeout_seconds: 600
 allowed_tools: [Read, Glob, Grep, Skill]
 ---
 
-My usage limit resets in six hours and a different coding agent will take over this branch tomorrow. What do I need to write down so it can pick up the work cold?
+My usage limit resets in six hours and a different coding agent will take over this branch tomorrow. What do I need to write down so it can pick up the work cold.

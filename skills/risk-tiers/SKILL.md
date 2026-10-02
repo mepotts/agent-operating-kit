@@ -9,8 +9,8 @@ Verification depth matches risk. Classify by what the change can touch, not by h
 
 | Tier | Change | Required before merge | Human sign-off |
 |---|---|---|---|
-| 0 | Docs, copy, non-behavioral | Self-check; build and typecheck | Spot-check |
-| 1 | Feature code; no schema, no production data | One independent refuting review; the lint gate; tests that ran (not skipped) | Integrator merges |
+| 0 | Docs, copy, non-behavioral | Self-check, build and typecheck | Spot-check |
+| 1 | Feature code: no schema, no production data | One independent refuting review, the lint gate, tests that ran (not skipped) | Integrator merges |
 | 2 | Schema, persistent, shared or client-shipped state | Tier 1, plus a forward and rollback round trip on production-shaped data, a rehearsal against a copy of production, a committed rollback | Explicit yes before production |
 | 3 | Production data writes, destructive actions, publishing, spending | Tier 2, plus the exact command or diff, a logged read-only count of what it touches, a known recovery path | Per-change approval by the human, never delegated |
 | 4 | Security surface: auth, uploads, callbacks, parsing, permissions, privacy | The change's own tier, plus a review briefed with a threat model | Security review |
@@ -23,7 +23,7 @@ Verification depth matches risk. Classify by what the change can touch, not by h
 
 ## Rules
 - Do not audit a copy change like a migration. Never ship a production-data change on one pass.
-- Reviewers get capability that matches the tier: the strongest model and higher effort for Tier 2 and up, security, and ambiguous cross-cutting work; cheaper models for mechanical work.
+- Reviewers get capability that matches the tier: the strongest model and higher effort for Tier 2 and up, security, and ambiguous cross-cutting work, cheaper models for mechanical work.
 - Tier 3 approval is per change and never delegated: show the exact command or diff and the read-only count of what it touches.
 - To run the review, use the `refute-review` skill or `/agent-operating-kit:refute`.
 

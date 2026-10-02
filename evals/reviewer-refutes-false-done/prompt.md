@@ -10,7 +10,7 @@ Use the agent-operating-kit refuting-reviewer agent to review the change below. 
 
 ## Spec
 Outcome: at checkout, a coupon whose expiry date is before today is rejected with an error. A coupon is valid through its expiry date, inclusive. The discount never takes the total below zero.
-Acceptance: c1 test_checkout_rejects_expired_coupon; c2 test_checkout_accepts_coupon_on_its_last_day; c3 test_discount_never_goes_below_zero.
+Acceptance: c1 test_checkout_rejects_expired_coupon, c2 test_checkout_accepts_coupon_on_its_last_day, c3 test_discount_never_goes_below_zero.
 
 ## Implementer's report (claims, untrusted)
 Added apply_coupon() with the expiry check and tests. Coupons are valid through their expiry date. Ran python -m unittest: all tests pass.

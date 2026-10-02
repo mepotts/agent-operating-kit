@@ -1,4 +1,4 @@
-# Sprint: <slug> - <one-line title>
+# Sprint <slug>: <one-line title>
 
 > TEMPLATE. Copy to the spec path named in AGENTS.md (default `sprints/<slug>.md`). Fill every field, delete guidance lines, keep it under two pages. No code before the outcome and risk tier are agreed.
 
@@ -7,7 +7,7 @@
 **Risk tier:** `<0-4>` because `<what the change can touch>` (the highest tier touched wins)
 
 ## Outcome
-`<One to three sentences of observable behavior. Not "improve X"; what a user or caller sees.>`
+`<One to three sentences of observable behavior. Not "improve X": what a user or caller sees.>`
 
 **Out of scope:** `<what this deliberately does not do>`
 
@@ -33,7 +33,7 @@ Write "done" as checks. If a criterion cannot fail, rewrite it.
 
 ## Isolation
 - Worktree and branch: `<path>` / `<branch>`
-- Data target: `<explicit; verify by count, not by trusting config>`. No production credentials in the workspace.
+- Data target: `<explicit: verify by count, not by trusting config>`. No production credentials in the workspace.
 - Ports and shared resources, and who holds the lease: `<reserved>`
 
 ## Workstreams

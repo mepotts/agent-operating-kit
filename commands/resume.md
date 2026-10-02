@@ -1,6 +1,6 @@
 ---
 description: Resume unfinished work from HANDOFF.md as a fresh agent, verifying before trusting
-argument-hint: "[path to the checkpoint - default is ./HANDOFF.md]"
+argument-hint: "[path to the checkpoint (default is ./HANDOFF.md)]"
 disable-model-invocation: true
 ---
 

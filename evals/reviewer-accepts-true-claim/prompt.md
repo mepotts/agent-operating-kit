@@ -10,7 +10,7 @@ Use the agent-operating-kit refuting-reviewer agent to review the change below. 
 
 ## Spec
 Outcome: at checkout, a coupon whose expiry date is before today is rejected with an error. A coupon is valid through its expiry date, inclusive. The discount never takes the total below zero.
-Acceptance: c1 test_checkout_rejects_expired_coupon; c2 test_checkout_accepts_coupon_on_its_last_day; c3 test_discount_never_goes_below_zero.
+Acceptance: c1 test_checkout_rejects_expired_coupon, c2 test_checkout_accepts_coupon_on_its_last_day, c3 test_discount_never_goes_below_zero.
 
 ## Implementer's report (claims, untrusted)
 Routed checkout() through apply_coupon() and deleted the older apply_promo() path. Removed the skip from the expiry test and added a last-day test. Searched for other callers of apply_promo: none. Ran python -m unittest:
@@ -20,7 +20,7 @@ Ran 5 tests in 0.000s
 OK
 ```
 
-Red-green, in a scratch copy: with checkout() pointed back at the old apply_promo() path (the expiry check left in place), test_checkout_rejects_expired_coupon fails ("ValueError not raised", FAILED (failures=1)); with the fix restored, OK. Nothing deferred. Status: done.
+Red-green, in a scratch copy: with checkout() pointed back at the old apply_promo() path (the expiry check left in place), test_checkout_rejects_expired_coupon fails ("ValueError not raised", FAILED (failures=1)). With the fix restored, OK. Nothing deferred. Status: done.
 
 ## Candidate
 candidate-b, content hash 9f2798d6601dbb115af576f51bd739b6f22963297afc584240f817066a3c4762
