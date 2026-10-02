@@ -131,11 +131,12 @@ Candidate: candidate-a (content hash 5d4e6dcc679c...c3747), no branch/revision g
 
 **Characters:** Every file is ASCII with no emoji and no red/green color coding.
 
+**GitHub install:** After publishing, `claude plugin marketplace add mepotts/agent-operating-kit` and `claude plugin install agent-operating-kit@agent-operating-kit` both succeeded on Claude Code 2.1.39 (2026-10-02, in an isolated config folder).
+
 ## 7. Not checked
 
 - Use by anyone other than me, on any project other than mine.
-- Installing from a GitHub source (`owner/repo`). Only the local-directory marketplace source was tested, because no remote existed yet.
-- macOS and Linux. The GitHub Actions workflow had not run, because there was no remote yet. Its `npm install -g @anthropic-ai/claude-code` step was untested on a runner (the same commands were run locally).
+- macOS and Linux. The GitHub Actions workflow ran on the first push and passed, on GitHub's runner.
 - Whether the kit improves outcomes over working without it. The eval has no no-plugin comparison and tests text fixtures on one model.
 - The slash commands were validated but never executed in a live session.
 - Codex, Cursor and other tools reading the templates.

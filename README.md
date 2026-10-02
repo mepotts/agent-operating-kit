@@ -34,7 +34,7 @@ Skip most of it for a throwaway spike.
 /agent-operating-kit:sprint add rate limiting to the export endpoint
 ```
 
-The GitHub form works once the repository is published. Until then, use a local clone and make the first line `/plugin marketplace add ./agent-operating-kit`.
+I tested the GitHub install above on Claude Code 2.1.39 on 2026-10-02. To install from a local clone instead, make the first line `/plugin marketplace add ./agent-operating-kit`.
 
 **Without the plugin** (any agent):
 
@@ -77,7 +77,7 @@ A refuted claim or a blocked gate goes back to the implementer. A failure found 
 
 ## Limitations
 
-**One author:** The method comes from my own projects. This packaging is new and unpublished. Nothing here shows it beats working without it.
+**One author:** The method comes from my own projects. This packaging is new. Nothing here shows it beats working without it.
 
 **Enforcement:** Skills, agents and `AGENTS.md` steer a model and block nothing. The reviewer has no edit tools. However, it still has Bash, and only its instructions limit that. Put hard limits in permission rules and CI.
 
@@ -87,7 +87,7 @@ A refuted claim or a blocked gate goes back to the implementer. A failure found 
 
 **Overhead:** Tiers and gates are heavy for small work. They fit software with real users or data.
 
-**Testing:** I developed it on Windows 11 with Claude Code 2.1.39 and 2.1.275. macOS, Linux and GitHub CI are untested. Codex and other tools can use the templates but not the skills, commands or agents.
+**Testing:** I developed it on Windows 11 with Claude Code 2.1.39 and 2.1.275. The GitHub Actions check passed on its first run. macOS and Linux are untested. Codex and other tools can use the templates but not the skills, commands or agents.
 
 **Evals:** The evals are shallow. They check that skills trigger and that the reviewer catches a planted defect from text. They do not measure whether the kit improves outcomes.
 

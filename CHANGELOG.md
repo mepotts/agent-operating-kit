@@ -4,7 +4,7 @@ This file records notable changes. The format follows [Keep a Changelog](https:/
 
 ## [0.1.0] (2026-09-30)
 
-Initial pre-release. Not yet published, and not yet used on a real project.
+Initial pre-release, published on GitHub. Not yet used on a real project.
 
 ### Added
 - Plugin manifest and a single-plugin marketplace manifest in `.claude-plugin/`.
