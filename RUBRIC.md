@@ -10,7 +10,7 @@ The agents do the work. The person decides what to build, writes the spec, and g
 
 ## How to score
 
-Score each of the nine criteria below from 1 to 4. The four levels mean the same thing for every criterion.
+Score each of the nine criteria below from 1 to 4. The four levels mean the same thing for every criterion. Pick the level that fits best and write down the gap to the next one. If the work doesn't show a criterion, mark it not scored.
 
 1. **Ask and accept.** Prompt the agent and use what comes back.
 2. **Spec and spot-check.** There is a written goal, and a person checks the output by hand.
