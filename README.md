@@ -14,7 +14,7 @@ The method has five steps:
 
 **Status:** v0.1.0, pre-release. It has not been used on a real project yet.
 
-AI agents (Claude Code) wrote this kit's files under my direction. I decided what to build, wrote the specs and checked the work.
+AI agents (Claude Code) wrote this kit's files under my direction. I decided what to build, wrote the specs, and had the agents build its evals.
 
 ## Who it is for
 
