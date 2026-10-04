@@ -2,6 +2,11 @@
 
 This file records notable changes. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and versions follow [Semantic Versioning](https://semver.org/).
 
+## [Unreleased]
+
+### Added
+- `RUBRIC.md`: one standard for any work done with AI agents. It has nine criteria scored 1 to 4, the checks by type of work, a short routine for training a team, and sourced reasons for the rules.
+
 ## [0.1.0] (2026-09-30)
 
 Initial pre-release, published on GitHub. Not yet used on a real project.

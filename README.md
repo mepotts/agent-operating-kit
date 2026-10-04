@@ -12,6 +12,8 @@ The method has five steps:
 4. Leave enough state for a fresh agent to resume cold.
 5. Turn each failure into a check that fails loudly next time.
 
+**Rubric:** [RUBRIC.md](RUBRIC.md) scores any work done with AI agents on nine criteria. It also shows what the checks look like for data science, stakeholder questions, research, evals, software, and running several agents at once.
+
 **Status:** v0.1.0, pre-release. It has not been used on a real project yet.
 
 AI agents (Claude Code) wrote this kit's files under my direction. I decided what to build, wrote the specs, and had the agents build its evals.
